@@ -33,7 +33,7 @@ const ContactHero = () => {
           transition={{ duration: 0.6 }}
           whileHover={{ scale: 1.05 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Email Section */}
             <motion.div
               className="flex flex-col items-center text-center"
@@ -43,30 +43,14 @@ const ContactHero = () => {
               <div className="text-5xl text-blue-600">
                 <i className="fas fa-envelope"></i> {/* FontAwesome Email Icon */}
               </div>
-              <p className="text-gray-800 text-lg font-medium mt-4">
-                info@yourcompany.com
-              </p>
+              <h3 className="text-xl font-semibold text-gray-800 mt-4">
+                karniinteriors9@gmail.com
+              </h3>
+              <h3 className=" text-xl font-semibold text-gray-800 mt-4">
+                Contact no. 9845102493
+              </h3>
             </motion.div>
 
-            {/* HSR Layout */}
-            <motion.div
-              className="flex flex-col items-center text-center"
-              whileHover={{ y: -10 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              <div className="text-5xl text-green-600">
-                <i className="fas fa-map-marker-alt"></i> {/* FontAwesome Location Icon */}
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mt-4">
-                HSR Layout
-              </h3>
-              <p className="text-gray-600">
-                S V Arcade, 27th Main Rd, 1st Sector,
-                <br />
-                HSR Layout, Bengaluru
-              </p>
-              <p className="text-gray-800 font-medium mt-2">6204446180</p>
-            </motion.div>
 
             {/* HRBR Layout */}
             <motion.div
@@ -78,12 +62,12 @@ const ContactHero = () => {
                 <i className="fas fa-map-marker-alt"></i> {/* FontAwesome Location Icon */}
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mt-4">
-                HRBR Layout
+                Akshay Nagar
               </h3>
               <p className="text-gray-600">
-                404 1st Floor, CMR Main Rd, HRBR Layout
+                #19 , Akshaya Nagar , Beside Canara Bank
                 <br />
-                2nd Block, Kalyan Nagar, Bengaluru
+                Yelenahalli Main Road , DLF New Town , Banglore - 560068
               </p>
               <p className="text-gray-800 font-medium mt-2">6204446180</p>
             </motion.div>

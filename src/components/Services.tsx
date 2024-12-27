@@ -9,11 +9,11 @@ interface Service {
 }
 
 const services: Service[] = [
-  { id: 1, name: 'Interior Design', image: '/images/img.jpg' },
-  { id: 2, name: 'Furniture Design', image: '/images/img.jpg' },
-  { id: 3, name: 'Space Planning', image: '/images/img.jpg' },
-  { id: 4, name: 'Lighting Design', image: '/images/img.jpg' },
-  { id: 5, name: 'Custom Artwork', image: '/images/img.jpg' },
+  { id: 1, name: 'Interior Design', image: '/images/service3.png' },
+  { id: 2, name: 'Furniture Design', image: '/images/service1.png' },
+  { id: 3, name: 'Space Planning', image: '/images/service2.png' },
+  { id: 4, name: 'Lighting Design', image: '/images/service4.png' },
+  { id: 5, name: 'Custom Artwork', image: '/images/service5.png' },
 ];
 
 const Service: React.FC = () => {

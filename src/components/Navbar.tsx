@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'; // For detecting the current route
-
+import logo from '../../public/images/logo_karniinterior.jpg';
+import Image from 'next/image';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname(); // Get the current path
@@ -12,10 +13,11 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className=" container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo Section */}
-        <h1 className="text-2xl font-bold text-yellow-500 hover:text-yellow-600 cursor-pointer transition duration-300">
-          KARNI INTERIORS
+        <h1 className="flex items-center text-2xl font-bold text-yellow-500 hover:text-yellow-600 cursor-pointer transition duration-300">
+          <Image className='lg:h-10 md:h-7 h-7 mr-2 ' src={logo} alt="Karni Interiors" width={50} height={50} />
+             KARNI INTERIORS
         </h1>
 
         {/* Navigation Links for Larger Screens */}

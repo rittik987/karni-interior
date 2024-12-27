@@ -10,7 +10,6 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
-    "@next/font": "^14.2.15",
     "@prisma/client": "^6.1.0",
     "axios": "^1.7.9",
     "bcrypt": "^5.1.1",

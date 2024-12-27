@@ -53,7 +53,7 @@ const GalleryPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* Gallery Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Project Gallery</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Gallery</h2>
           <p className="text-lg text-gray-600">
             Browse through all the stunning images from our portfolio projects.
           </p>

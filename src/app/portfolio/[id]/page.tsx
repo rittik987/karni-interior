@@ -58,14 +58,11 @@ const ProjectDetails: React.FC = () => {
         {/* Project Title */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800">{project.title}</h1>
-          <p className="text-gray-600 text-sm mt-2">
-            Created on: {new Date(project.createdAt).toLocaleDateString()}
-          </p>
         </div>
 
         {/* Project Description */}
-        <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Description</h2>
+        <div className="bg-white items-center p-6 rounded-lg shadow-md mb-8  ">
+          <h2 className=" text-2xl font-bold items-center text-gray-800 mb-4">Description</h2>
           <p className="text-gray-700 leading-relaxed">{project.description}</p>
         </div>
 

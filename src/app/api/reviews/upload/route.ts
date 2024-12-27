@@ -1,31 +1,54 @@
-import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function POST(req: Request) {
-  try {
-    // Parse the incoming JSON request
-    const body = await req.json();
-    const { name, content, rating } = body;
+type ReviewRequestBody = {
+  name: string;
+  email: string;
+  content: string;
+  rating: number;
+};
 
-    // Validate input
-    if (!name || !content || !rating || rating < 1 || rating > 5) {
-      return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
+export async function POST(request: Request): Promise<Response> {
+  try {
+    const body: ReviewRequestBody = await request.json();
+
+    const { name, email, content, rating } = body;
+
+    // Input Validation
+    if (!name || !email || !content || rating == null) {
+      return new Response(
+        JSON.stringify({ error: 'All fields are required.' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (typeof rating !== 'number' || rating < 1 || rating > 5) {
+      return new Response(
+        JSON.stringify({ error: 'Rating must be a number between 1 and 5.' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
     }
 
     // Create a new review in the database
-    const review = await prisma.review.create({
+    const newReview = await prisma.review.create({
       data: {
         name,
+        email,
         content,
-        rating,
+        rating: Math.round(rating), // Ensure it's an integer
       },
     });
 
-    return NextResponse.json({ message: 'Review uploaded successfully', review });
+    return new Response(
+      JSON.stringify({ message: 'Review uploaded successfully!', review: newReview }),
+      { status: 201, headers: { 'Content-Type': 'application/json' } }
+    );
   } catch (error: any) {
-    console.error('Error uploading review:', error);
-    return NextResponse.json({ error: 'Failed to upload review' }, { status: 500 });
+    console.error('Error creating review:', error.message);
+    return new Response(
+      JSON.stringify({ error: 'Failed to upload review.' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 }

@@ -12,7 +12,7 @@ export async function GET() {
 
     return NextResponse.json(reviews);
   } catch (error: any) {
-    console.error('Error fetching reviews:', error);
+    console.error('Error fetching reviews:', error.message);
     return NextResponse.json({ error: 'Failed to fetch reviews' }, { status: 500 });
   }
 }

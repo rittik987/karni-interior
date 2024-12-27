@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 const UploadReview: React.FC = () => {
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [content, setContent] = useState('');
   const [rating, setRating] = useState<number>(5);
   const [status, setStatus] = useState<string | null>(null);
@@ -17,7 +18,7 @@ const UploadReview: React.FC = () => {
       const response = await fetch('/api/reviews/upload', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, content, rating }),
+        body: JSON.stringify({ name, email, content, rating }),
       });
 
       if (!response.ok) {
@@ -26,6 +27,7 @@ const UploadReview: React.FC = () => {
       }
 
       setName('');
+      setEmail('');
       setContent('');
       setRating(5);
       setStatus('Review uploaded successfully!');
@@ -53,6 +55,16 @@ const UploadReview: React.FC = () => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
+            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           />
