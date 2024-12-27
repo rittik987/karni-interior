@@ -1,81 +1,120 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { usePathname } from "next/navigation"; // To get the current path
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation'; // For detecting the current route
 
-const Navbar = () => {
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname(); // Get the current path
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const getLinkClass = (href: string) =>
-    `relative text-black after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-orange-500 after:transition-all after:duration-300 ${
-      pathname === href ? "after:w-full" : "hover:after:w-full"
-    }`;
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="bg-white p-4 pr-8 shadow-md">
-      <div className="flex justify-between items-center">
-        {/* Left Side - Logo */}
-        <div className="text-black ml-10 font-bold text-2xl">
-          <Link href="/">MyLogo</Link>
-        </div>
+    <header className="bg-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Logo Section */}
+        <h1 className="text-2xl font-bold text-yellow-500 hover:text-yellow-600 cursor-pointer transition duration-300">
+          KARNI INTERIORS
+        </h1>
 
-        {/* Right Side - Desktop Menu */}
-        <nav className="hidden md:flex space-x-6 text-black">
-          <Link href="/" className={getLinkClass("/")}>
-            Home
-          </Link>
-          <Link href="/about" className={getLinkClass("/about")}>
-            About Us
-          </Link>
-          <Link href="/portfolio" className={getLinkClass("/portfolio")}>
-            Portfolio
-          </Link>
-          <Link href="/services" className={getLinkClass("/services")}>
-            Services
-          </Link>
-          <Link href="/contact" className={getLinkClass("/contact")}>
-            Contact Us
-          </Link>
+        {/* Navigation Links for Larger Screens */}
+        <nav className="hidden md:flex md:space-x-8 items-center">
+          {[
+            { name: 'HOME', href: '/' },
+            { name: 'ABOUT US', href: '/about' },
+            { name: 'PORTFOLIO', href: '/portfolio' },
+            { name: 'CONTACT', href: '/contact' },
+            { name: 'GALLERY', href: '/gallery' },
+          ].map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`font-serif font-bold ${
+                pathname === link.href
+                  ? 'text-yellow-500'
+                  : 'text-black hover:text-yellow-500'
+              } transition duration-300`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </nav>
-        <div></div>
 
-        {/* Hamburger Icon for Mobile */}
-        <div className="md:hidden text-black" onClick={toggleMenu}>
-          {isMenuOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
+        {/* Hamburger Menu Button (Mobile) */}
+        <button
+          className="md:hidden block text-gray-700 focus:outline-none z-50"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d={
+                isMenuOpen
+                  ? 'M6 18L18 6M6 6l12 12' // X icon
+                  : 'M4 6h16M4 12h16M4 18h16' // Hamburger icon
+              }
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Fullscreen Menu for Mobile */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8">
+          {[
+            { name: 'HOME', href: '/' },
+            { name: 'ABOUT US', href: '/about' },
+            { name: 'PORTFOLIO', href: '/portfolio' },
+            { name: 'CONTACT', href: '/contact' },
+            { name: 'GALLERY', href: '/gallery' },
+          ].map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              onClick={closeMenu}
+              className={`text-2xl font-serif font-bold ${
+                pathname === link.href
+                  ? 'text-yellow-500'
+                  : 'text-black hover:text-yellow-500'
+              } transition duration-300`}
+            >
+              {link.name}
+            </Link>
+          ))}
+
+          {/* Close Button */}
+          <button
+            onClick={closeMenu}
+            className="text-gray-700 focus:outline-none mt-8"
+          >
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
         </div>
-      </div>
-
-      {/* Mobile Menu - This will show when the hamburger is clicked */}
-      <div
-        className={`${
-          isMenuOpen ? "block" : "hidden"
-        } absolute top-0 left-0 w-full bg-blue-600 md:hidden p-4 space-y-4 flex flex-col items-center`}
-      >
-        <Link href="/" className={getLinkClass("/")} onClick={toggleMenu}>
-          Home
-        </Link>
-        <Link href="/about" className={getLinkClass("/about")} onClick={toggleMenu}>
-          About Us
-        </Link>
-        <Link href="/portfolio" className={getLinkClass("/portfolio")} onClick={toggleMenu}>
-          Portfolio
-        </Link>
-        <Link href="/services" className={getLinkClass("/services")} onClick={toggleMenu}>
-          Services
-        </Link>
-        <Link href="/contact" className={getLinkClass("/contact")} onClick={toggleMenu}>
-          Contact Us
-        </Link>
-      </div>
+      )}
     </header>
   );
 };
 
-export default Navbar;
+export default Header;

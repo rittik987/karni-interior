@@ -15,3 +15,22 @@ model Admin {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Portfolio {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  thumbnail   String
+  images      String[]
+  createdAt   DateTime @default(now())
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  name      String
+  content   String
+  rating    Int      @default(5) // Rating out of 5
+  createdAt DateTime @default(now())
+}
+
+

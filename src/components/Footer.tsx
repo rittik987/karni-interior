@@ -1,70 +1,73 @@
-"use client";
-
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Link from "next/link";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-800 text-white py-12">
-      <div className="container mx-auto px-6">
-        {/* Footer content with four sections */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {/* About Section */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">About Us</h3>
-            <p className="text-gray-400">
-              We are a company focused on delivering high-quality products with exceptional service.
-            </p>
-          </div>
-
-          {/* Links Section */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-            <ul>
-              <li><a href="#" className="text-gray-400 hover:text-white">Home</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Services</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Contact</a></li>
-            </ul>
-          </div>
-
-          {/* Social Media Section */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white">
-                <FaFacebook size={24} />
+    <footer className="bg-gray-900 text-white py-8 px-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* About Us Section */}
+        <div>
+          <h2 className="text-lg font-bold hover:text-blue-400 transition duration-300 cursor-pointer">
+            About Us
+          </h2>
+          <p className="text-sm mt-2">
+            We specialize in creating beautiful and functional interior spaces.
+          </p>
+          <div className="flex space-x-4 mt-4">
+            {[
+              { icon: <FaFacebook />, href: "#" },
+              { icon: <FaTwitter />, href: "#" },
+              { icon: <FaInstagram />, href: "#" },
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                className="text-xl hover:text-blue-400 transition duration-300"
+              >
+                {social.icon}
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
-                <FaTwitter size={24} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
-                <FaInstagram size={24} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
-                <FaLinkedin size={24} />
-              </a>
-            </div>
-          </div>
-
-          {/* Contact Section */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Contact Info</h3>
-            <p className="text-gray-400 mb-2">Address: 1234 Street Name, City, Country</p>
-            <p className="text-gray-400 mb-2">Phone: (123) 456-7890</p>
-            <p className="text-gray-400 mb-2">Email: support@example.com</p>
+            ))}
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="mt-12 border-t border-gray-700 pt-6">
-          <div className="flex justify-between items-center">
-            <p className="text-gray-400">© 2024 Company Name. All rights reserved.</p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-white">Terms of Service</a>
-            </div>
+        {/* Contact Section */}
+        <div>
+          <h2 className="text-lg font-bold hover:text-blue-400 transition duration-300 cursor-pointer">
+            Contact
+          </h2>
+          <p className="text-sm mt-2">Phone: +91 7742261445</p>
+          <p className="text-sm">Email: karniinteriors9@gmail.com</p>
+          <div className="mt-4">
+            {[
+              { name: "Home", href: "/" },
+              { name: "About Us", href: "/about" },
+              { name: "Portfolio", href: "/portfolio" },
+              { name: "Contact", href: "/contact" },
+              { name: "Gallery", href: "/gallery" },
+            ].map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="block text-sm hover:text-blue-400 transition duration-300"
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
+        </div>
+
+        {/* Image Section */}
+        <div className="grid grid-cols-2 gap-4">
+          {["/images/img.jpg", "/images/img.jpg", "/images/img.jpg", "/images/img.jpg"].map((src, index) => (
+            <Link key={index} href="/gallery">
+              <img
+                src={src}
+                alt={`Gallery Image ${index + 1}`}
+                className="w-full h-32 object-cover rounded-lg cursor-pointer transform transition duration-300 hover:scale-105 hover:brightness-75"
+              />
+            </Link>
+          ))}
         </div>
       </div>
     </footer>
