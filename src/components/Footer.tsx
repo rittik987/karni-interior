@@ -17,8 +17,7 @@ const Footer: React.FC = () => {
           <div className="flex space-x-4 mt-4">
             {[
               { icon: <FaFacebook />, href: "#" },
-              { icon: <FaTwitter />, href: "#" },
-              { icon: <FaInstagram />, href: "#" },
+              { icon: <FaInstagram />, href: "https://www.instagram.com/ashokkumar0781?igsh=YzMwcnplc2o2Mm1u" },
             ].map((social, index) => (
               <a
                 key={index}
@@ -36,7 +35,7 @@ const Footer: React.FC = () => {
           <h2 className="text-lg font-bold hover:text-blue-400 transition duration-300 cursor-pointer">
             Contact
           </h2>
-          <p className="text-sm mt-2">Phone: +91 7742261445</p>
+          <p className="text-sm mt-2">Phone: +91 9845102493</p>
           <p className="text-sm">Email: karniinteriors9@gmail.com</p>
           <div className="mt-4">
             {[
@@ -59,7 +58,7 @@ const Footer: React.FC = () => {
 
         {/* Image Section */}
         <div className="grid grid-cols-2 gap-4">
-          {["/images/img.jpg", "/images/img.jpg", "/images/img.jpg", "/images/img.jpg"].map((src, index) => (
+          {["/images/image1.jpg", "/images/image2.jpg", "/images/image3.jpg", "/images/service3.png"].map((src, index) => (
             <Link key={index} href="/gallery">
               <img
                 src={src}

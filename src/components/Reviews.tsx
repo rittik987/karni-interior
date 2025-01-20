@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 interface Review {
   id: number;
   name: string;
+  email : string;
   content: string;
   rating: number;
   createdAt: string;
@@ -50,7 +51,10 @@ const Reviews: React.FC = () => {
           {reviews.map((review) => (
             <div key={review.id} className="bg-white shadow-md rounded-lg p-6">
               <div className="flex items-center justify-between mb-4">
+                <div>
                 <h3 className="text-lg font-semibold text-gray-800">{review.name}</h3>
+                <h3 className="text-sm font-semibold text-gray-800">{review.email}</h3>
+                </div>
                 <span className="text-yellow-500 font-bold">{'⭐'.repeat(review.rating)}</span>
               </div>
               <p className="text-gray-600">{review.content}</p>

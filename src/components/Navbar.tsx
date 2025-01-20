@@ -16,7 +16,7 @@ const Header: React.FC = () => {
       <div className=" container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo Section */}
         <h1 className="flex items-center text-2xl font-bold text-yellow-500 hover:text-yellow-600 cursor-pointer transition duration-300">
-          <Image className='lg:h-10 md:h-7 h-7 mr-2 ' src={logo} alt="Karni Interiors" width={50} height={50} />
+          <Image className='lg:h-10 md:h-7 h-7 mr-2 ' src={logo} alt="Karni Interiors" width={50} height={60} />
              KARNI INTERIORS
         </h1>
 

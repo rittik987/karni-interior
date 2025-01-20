@@ -11,10 +11,10 @@ interface Project {
 }
 
 const projects: Project[] = [
-    { id: 1, name: 'Modern Living Room', image: '/images/image1.jpg', link: '/portfolio/living-room' },
-    { id: 2, name: 'Elegant Bedroom', image: '/images/image1.jpg', link: '/portfolio/bedroom' },
-    { id: 3, name: 'Luxury Kitchen', image: '/images/image2.jpg', link: '/portfolio/kitchen' },
-    { id: 4, name: 'Stylish Office', image: '/images/image3.jpg', link: '/portfolio/office' },
+    { id: 1, name: 'Modern Living Room', image: '/images/service1.png', link: '/portfolio' },
+    { id: 2, name: 'Elegant Bedroom', image: '/images/service4.png', link: '/portfolio' },
+    { id: 3, name: 'Luxury Kitchen', image: '/images/image2.jpg', link: '/portfolio' },
+    { id: 4, name: 'Stylish Office', image: '/images/image3.jpg', link: '/portfolio' },
   ];
 
 const Portfolio: React.FC = () => {
