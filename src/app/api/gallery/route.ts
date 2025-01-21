@@ -3,9 +3,8 @@ export const dynamic = 'force-dynamic';
 
 
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../../../../src/lib/prisma';
 
-const prisma = new PrismaClient();
 export async function GET(req: NextRequest) {
   try {
     // Fetch all projects and select only the `images` field

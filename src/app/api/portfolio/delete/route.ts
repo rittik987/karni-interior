@@ -2,11 +2,11 @@ export const dynamic = 'force-dynamic';
 
 
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
 import path from 'path';
 import { promises as fs } from 'fs';
+import { prisma } from '../../../../../src/lib/prisma';
 
-const prisma = new PrismaClient();
+
 
 export async function DELETE(req: Request): Promise<NextResponse> {
   try {

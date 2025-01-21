@@ -1,14 +1,17 @@
-import { PrismaClient } from "@prisma/client";
+export const dynamic = 'force-dynamic';
+
+
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { NextResponse } from "next/server";
+import { prisma } from '../../../../../src/lib/prisma';
+
 
 dotenv.config();
 
 const jwt_key = process.env.JWT_KEY;
 
-const prisma = new PrismaClient();
 
 if (!jwt_key) {
   throw new Error("JWT_KEY is not defined in the environment variables.");
