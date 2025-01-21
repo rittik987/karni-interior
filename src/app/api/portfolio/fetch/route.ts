@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
-
 const prisma = new PrismaClient();
+
 export async function GET(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get('id'); // Retrieve the ID from query parameters
+    // Use searchParams directly from req.nextUrl
+    const id = req.nextUrl.searchParams.get('id'); // Retrieve the ID from query parameters
 
     if (id) {
       // Fetch a specific project by ID with all fields
