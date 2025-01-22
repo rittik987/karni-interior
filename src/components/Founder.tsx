@@ -24,10 +24,10 @@ const Founder: React.FC = () => {
             <span className="font-semibold text-blue-800">Ashok Kumar</span>, the founder of Karni Interiors, started this company with a passion for creating beautiful and functional spaces. Before starting his own venture, he worked for others, gaining valuable experience in the interior design industry.
           </p>
           <p className="text-lg text-gray-700 mb-6">
-          With over 15 years of experience, Ashok believes that great design isn’t just about looks – it’s about making spaces that tell stories and inspire. This belief is the foundation of every project at Karni Interiors.
+          With over 15 years of experience, He believes that great design isn’t just about looks – it’s about making spaces that tell stories and inspire. This belief is the foundation of every project at Karni Interiors.
           </p>
           <p className="text-lg text-gray-700">
-          When he’s not designing, Ashok enjoys activities that spark his creativity and keep him inspired. His dedication and personal touch have earned the trust and appreciation of clients worldwide.
+          When he’s not designing, He enjoys activities that spark his creativity and keep him inspired. His dedication and personal touch have earned the trust and appreciation of clients worldwide.
           </p>
         </div>
       </div>
