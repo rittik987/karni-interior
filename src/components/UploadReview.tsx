@@ -56,7 +56,7 @@ const UploadReview: React.FC = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className=" mt-1 block w-full text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className=" mt-1 pl-4 block w-full text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
         <div>
@@ -66,17 +66,17 @@ const UploadReview: React.FC = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className=" mt-1 block w-full text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className=" mt-1 pl-4 block w-full text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Review</label>
+          <label className="block  text-sm font-medium text-gray-700">Review</label>
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
             required
             rows={4}
-            className=" mt-1 block w-full text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className=" mt-1 block pl-4 w-full text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           ></textarea>
         </div>
         <div>
@@ -84,7 +84,7 @@ const UploadReview: React.FC = () => {
           <select
             value={rating}
             onChange={(e) => setRating(Number(e.target.value))}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full pl-4 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           >
             {[1, 2, 3, 4, 5].map((star) => (
               <option key={star} value={star}>
