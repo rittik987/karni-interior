@@ -11,18 +11,59 @@ const HeroCarousel = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [startX, setStartX] = useState(0); // Tracks the starting point of the touch
+  const [isSmallDevice, setIsSmallDevice] = useState(false); // Tracks screen size
 
-  // Automatically change slides
+  // Detect screen size
   useEffect(() => {
+    const handleResize = () => {
+      setIsSmallDevice(window.innerWidth <= 768); // Set breakpoint for small devices
+    };
+
+    handleResize(); // Check on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Automatically change slides for larger devices
+  useEffect(() => {
+    if (isSmallDevice) return; // Disable auto-sliding on small devices
+
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000); // Change every 5 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
-  }, [images.length]);
+  }, [images.length, isSmallDevice]);
+
+  // Handle swipe start
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setStartX(e.touches[0].clientX); // Record the starting X position
+  };
+
+  // Handle swipe end
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const endX = e.changedTouches[0].clientX; // Record the ending X position
+    const diffX = endX - startX; // Calculate the swipe distance
+
+    if (diffX > 50) {
+      // Swipe right
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+    } else if (diffX < -50) {
+      // Swipe left
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }
+  };
 
   return (
-    <div className="relative w-full h-[500px] overflow-hidden">
+    <div
+      className="relative w-full h-[500px] overflow-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Carousel Images */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
