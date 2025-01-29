@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Roboto } from "next/font/google"; // Updated the import
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { Analytics } from "@vercel/analytics/react"
 import Footer from "@/components/Footer";
 
 // Define local fonts
@@ -45,7 +46,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         <Navbar />
-        <main className="">{children}</main>
+        <main className="">
+        {children}
+        <Analytics/>
+        </main>
         <Footer />
       </body>
     </html>
