@@ -1,0 +1,35 @@
+name: Auto Commit & Push Public Directory
+
+on:
+  push:
+    branches:
+      - main  # Change this if using a different branch
+  workflow_dispatch:  # Allows manual trigger if needed
+
+jobs:
+  auto-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
+
+      - name: Check for Changes in Public Directory
+        run: |
+          if [ -z "$(git status --porcelain public)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+      - name: Commit and Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use built-in GitHub token
+        run: |
+          git add public/*
+          git commit -m "Auto-update public directory [skip ci]" || exit 0
+          git push origin ${{ github.ref_name }}
