@@ -3,7 +3,7 @@ name: Auto Commit & Push Public Directory
 on:
   push:
     branches:
-      - main  # Change this if using a different branch
+      - main  # Change if using a different branch
   workflow_dispatch:  # Allows manual trigger if needed
 
 jobs:
@@ -19,17 +19,17 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions@github.com"
 
-      - name: Check for Changes in Public Directory
+      - name: Check for Changes in Public/Uploads Directory
         run: |
-          if [ -z "$(git status --porcelain public)" ]; then
+          if [ -z "$(git status --porcelain public/uploads)" ]; then
             echo "No changes to commit."
             exit 0
           fi
 
       - name: Commit and Push Changes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use built-in GitHub token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add public/*
-          git commit -m "Auto-update public directory [skip ci]" || exit 0
+          git add public/uploads/*
+          git commit -m "Auto-update public/uploads directory [skip ci]" || exit 0
           git push origin ${{ github.ref_name }}
